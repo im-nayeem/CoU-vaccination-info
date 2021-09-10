@@ -1,0 +1,112 @@
+
+/* -------Show Statistics------ */
+.stat
+    {
+      width: 100%;
+      /* margin-top: 10px; */
+      margin-bottom: 5px;
+    }
+    .total
+    {
+      width: 50%;
+      margin:auto;
+      color:#000;background-color:#e0e0e0bb;
+      border: 1px solid rgb(0, 0, 0);
+      margin: 7px auto 7px auto;
+    }
+    .shape
+    {
+      border-radius:16px;
+    }
+    .done{
+      line-height: 1.5em;
+      text-align: center;
+      color:rgb(0, 0, 0)!important;background-color:#009688!important
+    }
+    .stat h5
+    {
+      text-align: center;
+    }
+    .stat p,.dose p,.stat h4
+    {
+      display: inline;
+    }
+   
+/*--- Circle in stat ---*/
+  .circle{
+    /* float: left; */
+    height: 100px;
+  width: 100px;
+  border: 1px solid rgb(38, 131, 111);
+  overflow: hidden;
+  border-radius: 50%;
+  }
+
+  .filled{
+
+  border: 1px solid #009688;
+  float: left;
+  background-color:#009688;
+  height: 100%;
+  }
+
+    .unfilled{	
+    float: left;
+    background-color: rgba(255, 255, 255, 0.377);
+    height: 100%;
+    }
+    .text
+    {
+    height: auto;
+    padding-top: 30px;
+    text-align: center;
+    }
+    .dose
+    {
+      width: 50%;
+      margin: auto;
+    }
+    .left
+    {
+      float: left;
+    }
+    .right_circle
+    {
+      margin-right: 10px;
+      float: right;
+    }
+    .right
+    {
+      float: right;
+    }
+   .space
+    {
+
+      height:100px;
+    }
+
+
+    @media screen and (max-width: 830px)
+    {
+
+      .dose,.total
+      {
+        width:100%;
+        
+      }
+
+    }
+    .effects
+    {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+        width:100%;
+    }
+    .effects .circle,.effects .txt
+    {
+      margin: 5px auto;
+    }
+   .txt{
+     width: 100px;
+   }
