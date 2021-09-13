@@ -21,10 +21,17 @@
         <label for="id"><strong>ID*</strong><p>(You can't update ID.)</label>
             <input type="number" placeholder="ID" name="id" min=11401000 max=120199999 id="id" required>
 
-        <label for="dept"><strong>Department</strong></label>
-            <input type="text" placeholder="Updated Department" name="department" pattern="[A-Za-z ]+" id="dept">
+        <!-- <label for="dept"><strong>Department</strong></label>
+            <input type="text" placeholder="Updated Department" name="department" pattern="[A-Za-z ]+" id="dept"> -->
 
-        
+            <label for="dept"><strong>Department</strong></label>
+            <select name="department" id = "dept"  required>
+					<option selected disabled hidden>Select Department</option>
+					<?php foreach($dept as $value):?>
+						<option value="<?=$value;?>"><?=$value;?></option>
+						<?php endforeach;?>
+				</select>
+                
         <label for="session"><strong>Session</strong></label>
             <input type="text" placeholder="Updated Session(format: 2018-2019)" name="session" id="session" pattern="[0-9]{4}-[0-9]{4}" title="For example: 2018-2019" >
 
