@@ -19,7 +19,7 @@
             <input type="email" placeholder="Enter your e-mail" name="email" id="email" required>
 
         <label for="id"><strong>ID*</strong><p>(You can't update ID.)</label>
-            <input type="number" placeholder="Enter your ID" name="id" min=10000000 max=999999999 id="id" required>
+            <input type="number" placeholder="ID" name="id" min=11401000 max=120199999 id="id" required>
 
         <label for="dept"><strong>Department</strong></label>
             <input type="text" placeholder="Updated Department" name="department" pattern="[A-Za-z ]+" id="dept">

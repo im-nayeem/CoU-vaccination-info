@@ -1,6 +1,5 @@
 <?php $page="add"; //add var page to add active class in sidebar button
 $title="Add New Data";  //title for the page
-include 'includes/header&sidebar.php';
 require 'includes/connect_db.php';//requires php file that contain code to connect DB
 
 $conn=getDB(); 
@@ -17,12 +16,15 @@ $conn=getDB();
             $second_dose="";
             if($_POST['vaccinated'] == "Yes" and isset($_POST['second_dose']) )
                 $second_dose=$_POST['second_dose'];
+
+                if(!isset($_POST['department']))
+                    $error[]="Field <strong>Department</strong> can't be empty.";
             
             //check if vaccinated but didn't provide vaccination info 
             foreach($entity as $key => $value) // fetch key from $entity and check if it is found in post
                 if($_POST['vaccinated'] == "Yes" and
                     (!isset($_POST[$key]) or $_POST[$key]==""))
-                    if($key=="other_effect" or $key=="second_dose") //other_effect field can be empty
+                    if($key=="other_effect" or $key=="second_dose" or $key=="dept") //other_effect field can be empty
                         continue;
                     else
                         $error[]="Field <strong>{$value}</strong> can't be empty as you're vaccinated. Try again!";
@@ -87,6 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" and empty($error) and !empty($_POST))
             }
 }
 ?>
+<?php include 'includes/header&sidebar.php';?>
 
 <div class="content">
 

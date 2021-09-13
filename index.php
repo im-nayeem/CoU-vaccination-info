@@ -107,8 +107,11 @@ require "includes/connect_db.php";
 		<?php endif;?>
 <?php endif;?>
 
-<div class="effects">   <!-----------Search by filtering(Form)------------>
+
+<div class="effects">
+	<!-- .effect is customized in style.css-->   
 	<form action="" method="post">
+		<!-----------Search by filtering(Form)------------>
 				<select name="entity"  required>
 					<option selected disabled hidden>Select Entity</option>
 					<?php foreach($entity as $key=>$value):?>
@@ -116,20 +119,21 @@ require "includes/connect_db.php";
 						<?php endforeach;?>
 				</select>
 			<input type="text" placeholder="Entity Value" name="entity_val" pattern="[A-Za-z0-9@. -]+"required>
-			<select name="sort_by"  required>
+			
+			<select name="sort_by">
 					<option selected disabled hidden>Sort By</option>
 					<?php foreach($entity as $key=>$value):?>
+						<?php if($tables[$key]=='student' and $key!='email'):?>
 						<option value="<?=$key;?>"><?=$value;?></option>
+						<?php endif;?>
 						<?php endforeach;?>
 			</select>
 				<button type="submit">Filter Search</button>
 	</form>
 </div>
-
+<!--------------End of search by filter----------->
 	
 </div>
-
-<!--------------End of search by filter----------->
 </div>
 <?php include 'includes/visitor.php';
 ?>

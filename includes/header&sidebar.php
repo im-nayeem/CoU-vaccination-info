@@ -24,8 +24,8 @@
     <li class="<?php if($page=="update"):?><?="active";?> <?php endif?>">
     <a href="update.php">Update Data</a>
 
-    <li class="<?php if($page=="delete"):?><?="active";?> <?php endif?>">
-    <a href="delete.php">Delete Data</a>
+    <li class="<?php if($page=="show_info"):?><?="active";?> <?php endif?>">
+    <a href="show_info.php">Show All Information</a>
     
 </ul>
 </div>

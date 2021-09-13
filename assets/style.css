@@ -11,7 +11,7 @@ body{
 /*---------Form CSS-----------------*/
 
     /* Full-width input fields */
-    input[type=text], input[type=number],input[type=email],input[type=date],input[type=password],textarea{
+    input[type=text], input[type=number],input[type=email],input[type=date],input[type=password],select,textarea{
       width: 100%;
       padding: 15px;
       margin: 5px 0 22px 0;
@@ -189,13 +189,16 @@ body{
           width: 50%;
           margin: auto;
           border-radius: 5px;
-          background-color: #acacac8a;
+          background-color: #a8a6a673;
           padding: 12px;
           line-height: 1.5em;
         }
         .single table
         {
           margin-top:7px;
+        }
+        .single th{
+          background-color: #fff0;
         }
        
 /*-------Content CSS(main content)------*/
@@ -229,9 +232,7 @@ body{
       .single,.multiple{
         overflow: auto;
       }
-      .single th{
-        background-color: rgba(255, 255, 255, 0);
-      }
+      
 /*-------Table in content---------*/
 
 
@@ -258,13 +259,17 @@ body{
         height: auto;
         position: relative;
       }
-      .header,.footer
+      .header
       {
         width: 100%;
         margin-left: 0;
+        font-size: x-small;
+        line-height: 3em;
       }
-      .header{
-        font-size: small;
+      .footer{
+        width: 100%;
+        margin-left: 0;
+        font-size: smaller;
       }
       .sidebar a { 
         text-align: center;
@@ -289,26 +294,31 @@ body{
 
     
 /*---fill up whole form if vaccinated---*/
-      
     .content .modal #vccntd
       {
         display: none;
-
+          /*form.php*/
       }
 /*---fill up whole form if vaccinated---*/
 
+
+/*-div id that shows data in index.php-*/
 #all_data,#v_std,#v_info,#s_e_info
 {
   display: none;
 }
+
 .show{
   overflow: auto;
 }
+
+/*button to show hidden table in index.php*/
 .btn{
   margin:3px 0;
   border: 2px solid rgba(255, 255, 255, 0.151);
 
 }
+/* button to hide table in index.php*/
 .hide
 {
   width:20%;
@@ -317,13 +327,8 @@ body{
   margin:5px 0 5px 0;
   background-color: rgb(119, 58, 23);
 }
-.effects input, .effects select,
-.effects button {
-  width: 32%;
-    padding: 10px 5px;
-    margin: 5px auto;
-  
-}
+
+
 
 #err{
  background-color: rgb(177, 176, 176);
@@ -343,4 +348,17 @@ body{
 {
   position: sticky;
   top:30%;
+}
+
+
+
+.case_stat select, .case_stat button {
+  width: 50%;
+  padding: 7px;
+  padding: 10px 5px;
+  margin: 5px auto;
+}
+.case_stat {
+  display: flex;
+  margin: 5px auto;
 }

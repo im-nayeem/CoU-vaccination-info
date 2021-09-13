@@ -100,8 +100,8 @@
     </div>
 
 </div>
-<div class="space">  
-    </div>
+<!-- <div class="space">  
+    </div> -->
     <div class="dose">
         <div class="left">
             Taken First Dose

@@ -19,12 +19,20 @@
         <label for="email"><strong>Email</strong></label>
             <input type="email" placeholder="Email" name="email" id="email" required>
 
-
+<!-- 
         <label for="dept"><strong>Department</strong></label>
-            <input type="text" placeholder="Department" name="department" id="dept" pattern="[A-Za-z]+" required>
+            <input type="text" placeholder="Department" name="department" id="dept" pattern="[A-Za-z]+" required> -->
+
+            <label for="dept"><strong>Department</strong></label>
+            <select name="department" id = "dept"  required>
+					<option selected disabled hidden>Select Department</option>
+					<?php foreach($dept as $value):?>
+						<option value="<?=$value;?>"><?=$value;?></option>
+						<?php endforeach;?>
+				</select>
 
         <label for="id"><strong>ID</strong></label>
-            <input type="number" placeholder="ID" name="id" min=10000000 max=999999999 id="id" required>
+            <input type="number" placeholder="ID" name="id" min=11401000 max=120199999 id="id" required>
 
         
         <label for="session"><strong>Session</strong></label>

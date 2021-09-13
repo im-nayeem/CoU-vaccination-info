@@ -2,6 +2,7 @@
 /* -------Show Statistics------ */
 .stat
     {
+      overflow: auto;
       width: 100%;
       /* margin-top: 10px; */
       margin-bottom: 5px;
@@ -23,7 +24,7 @@
       text-align: center;
       color:rgb(0, 0, 0)!important;background-color:#009688!important
     }
-    .stat h5
+    .stat h5,.stat h3
     {
       text-align: center;
     }
@@ -96,12 +97,21 @@
       }
 
     }
+
+
+ /*effects class that contain data in center of div (use display:flex)*/
     .effects
     {
       display: flex;
       justify-content: center;
       text-align: center;
         width:100%;
+    }
+    .effects input, .effects select,
+    .effects button {
+        width: 32%;
+        padding: 10px 5px;
+        margin: 5px auto;
     }
     .effects .circle,.effects .txt
     {

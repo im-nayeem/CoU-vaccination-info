@@ -94,4 +94,13 @@
       return 0;
       }
 
+
+
+//array containing all the department's name
+$dept=["CSE","ICT","LAW","Mathematics","Physics","Chemistry","Pharmacy","Bangla","English","Public Administration","MCJ","Anthropology","Archaeology","Economics","Management System","AIS","Marketing","Finance & Banking"];
+
+//array containing all sessions
+$session = ["2014-2015","2015-2016","2016-2017","2017-2018","2018-2019","2019-2020"];
+
+
 ?>
