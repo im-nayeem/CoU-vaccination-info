@@ -11,7 +11,6 @@ $error=[];
 //-------------------------------Validate input form-------------------------------//
 
 $second_dose="";
-$vaccin_nise="";
 if($_SERVER['REQUEST_METHOD']=="POST" and !empty($_POST))
 {
 
@@ -20,39 +19,20 @@ if($_SERVER['REQUEST_METHOD']=="POST" and !empty($_POST))
 
           if($dat[0]['vaccinated']=='Yes')
           {
-            $sql="SELECT * 
-                FROM  student,vaccination_info,side_effect where
-                student.id={$_POST['id']} and vaccination_info.ID=student.ID
-                  and side_effect.ID = vaccination_info.ID";
-                  $dat = get_element($conn,$sql);
+              $sql="SELECT * 
+                  FROM  student,vaccination_info,side_effect where
+                  student.id={$_POST['id']} and vaccination_info.ID=student.ID
+                    and side_effect.ID = vaccination_info.ID";
+              $dat = get_element($conn,$sql);
           }
-                  
-                  // var_dump($dat[0]);
-                  // echo "<br><br>";
-
+           
           foreach($dat[0] as $k=>$v)
               if(!empty($_POST[$k]))
-              {
-                  if($k=='vaccinated')
-                    continue;
                   $dat[0][$k]=$_POST[$k];
-              }
                 
-              $data=$dat[0];
-              // var_dump($data);
-              
-              // var_dump($_POST);
-              //     echo "<br><br>";
-              //     var_dump($data);
-
-              if(isset($_POST['vaccinated']))
-                  $vaccin_nise=$_POST['vaccinated'];
-                else
-                    $vaccin_nise=$data['vaccinated'];
-                  
-
-              
-              if(isset($_POST['vaccinated']) and $_POST['vaccinated'] == "Yes" and $data['vaccinated']=="No")
+            $data=$dat[0];
+            
+              if($_POST['vaccinated'] == "Yes")
               {
 
                   $second_dose="";
@@ -64,14 +44,14 @@ if($_SERVER['REQUEST_METHOD']=="POST" and !empty($_POST))
                       if($tables[$key]!='student' and
                         (!isset($_POST[$key]) or $_POST[$key]==""))
                         {
-                            if($key=="other_effect") //other_effect field can be empty
+                            if($key=="other_effect" or $key=="second_dose") //other_effect field can be empty
                               continue;
                             else
                               $error[]="Field <strong>{$value}</strong> can't be empty as you're vaccinated. Try again!";
                         }
               }
-          }
-   // --------------------------------End of Validation-----------------------//
+   }
+// --------------------------------End of Validation-----------------------//
 
 
 
@@ -79,22 +59,20 @@ if($_SERVER['REQUEST_METHOD']=="POST" and !empty($_POST))
 
   if(!empty($_POST) and empty($error))
       {
-        $count=0;
-        // $conn=getDB(); 
-          //get connection to database from getBD() in connect_db.php file
+          $count=0;
+          // $conn=getDB(); 
+            //get connection to database from getBD() in connect_db.php file
 
-        $sql="UPDATE student set name=?,department=?,session=?,vaccinated=? WHERE (id=? and email=?);";
+          $sql="UPDATE student set name=?,department=?,session=?,vaccinated=? WHERE (id=? and email=?);";
 
-        $stmt=prepare_sql($conn,$sql); // call function to prepare sql
-        if($stmt) //if $stmt is not false then procced
-        {
-                mysqli_stmt_bind_param($stmt,"ssssis",$data['name'],$data['department'],$data['session'],$vaccin_nise,$data['id'],$data['email']); //update student table
-                $count+=is_success($stmt,$conn);  
+          $stmt=prepare_sql($conn,$sql); // call function to prepare sql
+          if($stmt) //if $stmt is not false then procced
+          {
+                  mysqli_stmt_bind_param($stmt,"ssssis",$data['name'],$data['department'],$data['session'],$data['vaccinated'],$data['id'],$data['email']); //update student table
+                  $count+=is_success($stmt,$conn);  
 
-                
-        }
-          if($count == 1 and isset($_POST['vaccinated']) and 
-          $_POST['vaccinated']=="No" and $data['vaccinated']=="Yes")//if not vaccinated and inserted successfully then redirect
+          }
+          if($_POST['vaccinated']=="No")//if not vaccinated and inserted successfully then redirect
                 {
                     $sql="DELETE FROM side_effect WHERE id=?";
                     $stmt=prepare_sql($conn,$sql);
@@ -111,13 +89,42 @@ if($_SERVER['REQUEST_METHOD']=="POST" and !empty($_POST))
                             mysqli_stmt_bind_param($stmt,"i",$data['id']);
                             $count+=is_success($stmt,$conn);
                           }
+                      if($count==3) //if inserted into 3 tables successfully then redirect
+                      {
+                          redirect("view.php?entty=id&value={$_POST['id']}");
+                          exit;
+                      }
                           
                   }
-                  if(isset($_POST['vaccinated']) and 
-          $_POST['vaccinated']=="No" and $count==3)
-                  redirect("view.php?entty=id&value={$data['id']}");
-                 else if($count==1)
-                 redirect("view.php?entty=id&value={$data['id']}");
+              else if($_POST['vaccinated']=="Yes")
+              {
+                    $sql = "INSERT INTO vaccination_info VALUES(?,?,?,?,?,?)";
+                    $stmt = prepare_sql( $conn , $sql );
+                    
+                    if($stmt)
+                    {
+                        mysqli_stmt_bind_param($stmt,"isssss",$_POST['id'],$_POST['vaccination_id'],$_POST['vaccine_name'],$_POST['vaccination_date'],$_POST['first_dose'],$second_dose);
+                        $count+=is_success($stmt,$conn);
+                    }
+
+                    $sql = "INSERT INTO side_effect VALUES( ?,?,?,?,?,? )";
+                    $stmt = prepare_sql($conn , $sql);
+
+                    if( $stmt )
+                    {
+
+                        mysqli_stmt_bind_param($stmt,"isssss",$_POST['id'],$_POST['vaccination_id'],$_POST['fever'],$_POST['headache'],$_POST['vomitting'],$_POST['other_effect']);
+
+                        $count+=is_success($stmt,$conn);
+                    }
+                
+                    if($count==3) //if inserted into 3 tables successfully then redirect
+                    {
+                        redirect("view.php?entty=id&value={$_POST['id']}");
+                        exit;
+                    }
+              }
+            
       
                   
   }

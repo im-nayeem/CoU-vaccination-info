@@ -197,6 +197,7 @@ body{
         {
           margin-top:7px;
         }
+       
 /*-------Content CSS(main content)------*/
 
 /*-------Table in content---------*/
@@ -227,6 +228,9 @@ body{
       }
       .single,.multiple{
         overflow: auto;
+      }
+      .single th{
+        background-color: rgba(255, 255, 255, 0);
       }
 /*-------Table in content---------*/
 

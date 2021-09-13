@@ -131,6 +131,7 @@ require "includes/connect_db.php";
 
 <!--------------End of search by filter----------->
 </div>
-<?php include 'includes/visitor.php';?>
+<?php include 'includes/visitor.php';
+?>
 
 <?php include 'includes/footer.php';?>

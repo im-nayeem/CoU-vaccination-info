@@ -31,16 +31,18 @@
         
         <label for="vaccinated"><strong>Vaccinated:</strong></label>
             <label>
-                <input type="radio" name="vaccinated" value="Yes"  id="vaccinated" onclick="document.getElementById('vccntd').style.display='block'" >Yes</label>
+                <input type="radio" name="vaccinated" value="Yes"  id="vaccinated" onclick="document.getElementById('vccntd').style.display='block'" required>Yes</label>
             <label>
-                <input type="radio" name="vaccinated" value="No" id="vaccinated" onclick="document.getElementById('vccntd').style.display='none'" >No</label>
+                <input type="radio" name="vaccinated" value="No" id="vaccinated" onclick="document.getElementById('vccntd').style.display='none'" required>No</label>
 
     <!-- When clicked yes in Vaccinated button,this vccntd div appears -->
             <div id="vccntd">
                 <br>
                 <h3>Vaccination Info:</h3>
                 <hr>
-                
+                <label for="vaccination_id"><strong>Vaccination ID</strong></label>
+                <input type="text" placeholder="Vaccination ID"  name="vaccination_id" id="vaccination_id" pattern="[A-Za-z0-9]+">
+
                 <label for="vaccine_name"><strong>Vaccine Name</strong></label>
                     <input type="text" placeholder="Updated Vaccine Name" name="vaccine_name" id="vaccine_name"pattern="[A-Za-z ]+" >
                 
