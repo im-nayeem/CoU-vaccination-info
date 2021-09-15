@@ -1,364 +1,374 @@
 body{
-    background-image: linear-gradient(to bottom right,rgb(211, 176, 110),rgb(156 192 207), rgb(61, 175, 118));
+  background-image: linear-gradient(to bottom right,rgb(211, 176, 110),rgb(156 192 207), rgb(61, 175, 118));
 }
 *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  
+
 /*---------Form CSS-----------------*/
 
-    /* Full-width input fields */
-    input[type=text], input[type=number],input[type=email],input[type=date],input[type=password],select,textarea{
+  /* Full-width input fields */
+  input[type=text], input[type=number],input[type=email],input[type=date],input[type=password],select,textarea{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  textarea{
+    height: 150px;
+  }
+  /* Add a background color when the inputs get focus */
+  input[type=text]:focus, input[type=number]:focus,input[type=email]:focus,textarea:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+  /* Set a style for all buttons */
+  button {
+    background-color: #316955;
+    color: rgb(228, 222, 222);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    /* width:auto; */
+  }
+
+  button:hover {
+    opacity:0.6;
+  }
+
+  /* Extra styles for the cancel button */
+  .cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+  }
+
+  /* Float cancel and signup buttons and add an equal width */
+  .cancelbtn, .submitbtn {
+    float: left;
+    width: 50%;
+    margin-top:2%;
+  }
+
+  /* Add padding to container elements */
+  .container {
+    padding: 16px;
+  }
+
+  /* The Modal (background) */
+  .modal {
+    display: none; /*Hidden by default*/
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 0px;
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+
+  /* Style the horizontal ruler */
+  .container hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  
+  /* The Close Button (x) */
+  .close {
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #8a2929;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #f44336;
+    cursor: pointer;
+  }
+
+  /* Clear floats */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  /* Change styles for cancel button and signup button on extra small screens */
+  @media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
       width: 100%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      display: inline-block;
-      border: none;
-      background: #f1f1f1;
     }
-    textarea{
-      height: 150px;
-    }
-    /* Add a background color when the inputs get focus */
-    input[type=text]:focus, input[type=number]:focus,input[type=email]:focus,textarea:focus {
-      background-color: #ddd;
-      outline: none;
-    }
-
-    /* Set a style for all buttons */
-    button {
-      background-color: #316955;
-      color: rgb(228, 222, 222);
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      font-weight: bold;
-      /* width:auto; */
-    }
-
-    button:hover {
-      opacity:0.6;
-    }
-
-    /* Extra styles for the cancel button */
-    .cancelbtn {
-      padding: 14px 20px;
-      background-color: #f44336;
-    }
-
-    /* Float cancel and signup buttons and add an equal width */
-    .cancelbtn, .submitbtn {
-      float: left;
-      width: 50%;
-      margin-top:2%;
-    }
-
-    /* Add padding to container elements */
-    .container {
-      padding: 16px;
-    }
-
-    /* The Modal (background) */
-    .modal {
-      display: none; /*Hidden by default*/
-      position: fixed; /* Stay in place */
-      z-index: 1; /* Sit on top */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: #474e5d;
-      padding-top: 0px;
-    }
-
-    /* Modal Content/Box */
-    .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-      border: 1px solid #888;
-      width: 80%; /* Could be more or less, depending on screen size */
-    }
-
-    /* Style the horizontal ruler */
-    .container hr {
-      border: 1px solid #f1f1f1;
-      margin-bottom: 25px;
-    }
-    
-    /* The Close Button (x) */
-    .close {
-      right: 35px;
-      top: 15px;
-      font-size: 40px;
-      font-weight: bold;
-      color: #8a2929;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: #f44336;
-      cursor: pointer;
-    }
-
-    /* Clear floats */
-    .clearfix::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
-
-    /* Change styles for cancel button and signup button on extra small screens */
-    @media screen and (max-width: 300px) {
-      .cancelbtn, .signupbtn {
-        width: 100%;
-      }
-    }
+  }
 /*----------Form CSS-----------------*/
 
 /*--------Header CSS--------*/
-    .header
-    {
-      width: 90%;
-      position: sticky;
-      background-color: cadetblue;
-      top: 0px;
-      left:5%;
-      text-align: center;
-      z-index: 1;
+  .header
+  {
+    width: 90%;
+    position: sticky;
+    background-color: cadetblue;
+    top: 0px;
+    left:5%;
+    text-align: center;
+    z-index: 1;
 
-    }
-        
-    .header hr,.footer hr{
-      border: 1px solid rgb(82, 82, 82);
+  }
+      
+  .header hr,.footer hr{
+    border: 1px solid rgb(82, 82, 82);
+  }
+   .footer a{
+        text-decoration:none;
+        color:black;
     }
 /*-------Header CSS--------------*/
 
 /*-----------Sidebar CSS--------*/
-    .sidebar {
-      margin: 0 0 0 5%;
-      padding: 0;
-      width: 15%;
-      background-color: rgb(98, 174, 204);
-      position: fixed;
-      height: 100%;
-      overflow: auto;
-      
-    }
-    .sidebar a {
-      display: block;
-      color: black;
-      background-color: rgb(109, 148, 135);
-      padding: 10px;
-      margin: 2px;
-      text-decoration: none;
-      border: 1px solid black;
-    }
+  .sidebar {
+    margin: 0 0 0 5%;
+    padding: 0;
+    width: 15%;
+    background-color: rgb(98, 174, 204);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
     
+  }
+  .sidebar a {
+    display: block;
+    color: black;
+    background-color: rgb(109, 148, 135);
+    padding: 10px;
+    margin: 2px;
+    text-decoration: none;
+    border: 1px solid black;
+  }
+  
 
-    .sidebar a:hover{
-      background-color: rgb(69, 73, 73);
-      color: rgb(227, 236, 232);
-    }
-    .sidebar .active a  {
-      background-color: rgb(51, 121, 78);
-      color: white;
-      text-decoration: none;
-    }
+  .sidebar a:hover{
+    background-color: rgb(69, 73, 73);
+    color: rgb(227, 236, 232);
+  }
+  .sidebar .active a  {
+    background-color: rgb(51, 121, 78);
+    color: white;
+    text-decoration: none;
+  }
 /*----------Sidebar CSS------------*/
 
 /*------Content CSS(main content)------*/
-    .content {
-      margin-left: 20%;
-      padding: 10px;
-      min-height: 100vh;
-      overflow: auto;
-      width: 75%;
-      background-image: linear-gradient(to bottom right,rgb(48, 150, 124),rgb(156 192 207), rgb(173, 143, 58));
-    }
+  .content {
+    margin-left: 20%;
+    padding: 10px;
+    min-height: 100vh;
+    overflow: auto;
+    width: 75%;
+    background-image: linear-gradient(to bottom right,rgb(48, 150, 124),rgb(156 192 207), rgb(173, 143, 58));
+  }
 
-        /* div to show single data in view.php */
-        .single
-        {
-          text-align: center;
-          width: 50%;
-          margin: auto;
-          border-radius: 5px;
-          background-color: #a8a6a673;
-          padding: 12px;
-          line-height: 1.5em;
-        }
-        .single table
-        {
-          margin-top:7px;
-        }
-        .single th{
-          background-color: #fff0;
-        }
-       
+      /* div to show single data in view.php */
+      .single
+      {
+        text-align: center;
+        width: 50%;
+        margin: auto;
+        border-radius: 5px;
+        background-color: #a8a6a673;
+        padding: 12px;
+        line-height: 1.5em;
+      }
+      .single table
+      {
+        margin-top:7px;
+      }
+      .single th{
+        background-color: #fff0;
+      }
+     
 /*-------Content CSS(main content)------*/
 
 /*-------Table in content---------*/
-      table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-      }
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #6e7371;
+      text-align: left;
+      padding: 6px;
       
-      td, th {
-        border: 1px solid #6e7371;
-        text-align: left;
-        padding: 6px;
-        
-      }
-      th{
-        background-color: #94949480;
-      }
-      table a{
-        text-decoration: none;
-        color: black;
-      }
-      tr:nth-child(even) {
-        background-color: #ddddddb6;
-      }
-      tr:nth-child(odd) {
-        background-color: #94949424;
-      }
-      .single,.multiple{
-        overflow: auto;
-      }
-      
+    }
+    th{
+      background-color: #94949480;
+    }
+    table a{
+      text-decoration: none;
+      color: black;
+    }
+    tr:nth-child(even) {
+      background-color: #ddddddb6;
+    }
+    tr:nth-child(odd) {
+      background-color: #94949424;
+    }
+    .single,.multiple{
+      overflow: auto;
+    }
+    
 /*-------Table in content---------*/
 
 
 /*-------Footer CSS----------*/
-    .footer
-    {
-      width: 90%;
-      margin-left: 5%;
-      position: sticky;
-      bottom: 0px;
-      background-color: cadetblue;
-      text-align: center;
-      /* line-height: 1em; */
-    }
+  .footer
+  {
+    width: 90%;
+    margin-left: 5%;
+    position: sticky;
+    bottom: 0px;
+    background-color: cadetblue;
+    text-align: center;
+    /* line-height: 1em; */
+  }
 /*-------Footer CSS----------*/
 
 
 /*-------CSS to make Responsive------*/
 
-    @media screen and (max-width: 830px) {
-      .sidebar {
-        width: 100%;
-        margin-left: 0;
-        height: auto;
-        position: relative;
-      }
-      .header
-      {
-        width: 100%;
-        margin-left: 0;
-        font-size: x-small;
-        line-height: 3em;
-      }
-      .footer{
-        width: 100%;
-        margin-left: 0;
-        font-size: smaller;
-      }
-      .sidebar a { 
-        text-align: center;
-        float: none;
-        padding: 6px;
-      }
-      .content {
-        width:100%;
-        margin-left: 0;
-        overflow: auto;
-      }
-      .content .single
-      {
-        width: 100%;
-      }
-      td,th{
-        padding: 3px;
-      }
-     
+  @media screen and (max-width: 830px) {
+    .sidebar {
+      width: 100%;
+      margin-left: 0;
+      height: auto;
+      position: relative;
     }
+    .header
+    {
+      width: 100%;
+      margin-left: 0;
+     font-size: 62%;
+      line-height: 2.5em;
+    }
+    .footer{
+      width: 100%;
+      margin-left: 0;
+      font-size: smaller;
+    }
+   
+    .sidebar a { 
+      text-align: center;
+      float: none;
+      padding: 6px;
+    }
+    .content {
+      width:100%;
+      margin-left: 0;
+      overflow: auto;
+    }
+    .content .single
+    {
+      width: 100%;
+    }
+    td,th{
+      padding: 3px;
+    }
+   
+  }
 /*-------CSS to make Responsive------*/
 
-    
+  
 /*---fill up whole form if vaccinated---*/
-    .content .modal #vccntd
-      {
-        display: none;
-          /*form.php*/
-      }
+  .content .modal #vccntd
+    {
+      display: none;
+        /*form.php*/
+    }
 /*---fill up whole form if vaccinated---*/
 
 
 /*-div id that shows data in index.php-*/
 #all_data,#v_std,#v_info,#s_e_info
 {
-  display: none;
+display: none;
 }
 
 .show{
-  overflow: auto;
+overflow: auto;
 }
 
 /*button to show hidden table in index.php*/
 .btn{
-  margin:3px 0;
-  border: 2px solid rgba(255, 255, 255, 0.151);
+margin:3px 0;
+border: 2px solid rgba(255, 255, 255, 0.151);
 
 }
 /* button to hide table in index.php*/
 .hide
 {
-  width:20%;
-  height: auto;
-  padding: 3px;
-  margin:5px 0 5px 0;
-  background-color: rgb(119, 58, 23);
+width:20%;
+height: auto;
+padding: 3px;
+margin:5px 0 5px 0;
+background-color: rgb(119, 58, 23);
 }
 
-
+.effects input, .effects select,
+  .effects button {
+      width: 32%;
+      padding: 10px 5px;
+      margin: 5px auto;
+  }
 
 #err{
- background-color: rgb(177, 176, 176);
+background-color: rgb(177, 176, 176);
 }
 .find_std input[type="number"] {
-  float: left;
-  margin: 0px;
-  width: 70%;
-  padding: 10px;
+float: left;
+margin: 0px;
+width: 70%;
+padding: 10px;
 }
 .find_std button {
-  width: 30%;
-  margin: 0px;
-  padding: 10px;
+width: 30%;
+margin: 0px;
+padding: 10px;
 }
 .find_std
 {
-  position: sticky;
-  top:30%;
+position: sticky;
+top:30%;
 }
 
 
 
 .case_stat select, .case_stat button {
-  width: 50%;
-  padding: 7px;
-  padding: 10px 5px;
-  margin: 5px auto;
+width: 50%;
+padding: 7px;
+padding: 10px 5px;
+margin: 5px auto;
 }
 .case_stat {
-  display: flex;
-  margin: 5px auto;
+display: flex;
+margin: 5px auto;
 }

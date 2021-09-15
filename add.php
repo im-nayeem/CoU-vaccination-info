@@ -86,6 +86,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST" and empty($error) and !empty($_POST))
                     redirect("view.php?entty=id&value={$_POST['id']}");
                      exit;
                  }
+                else
+                {
+                    $sql="
+                    DELETE FROM side_effect where id={$_POST['id']};
+                     DELETE FROM vaccination_info where id={$_POST['id']};
+                      DELETE FROM student where id={$_POST['id']};
+                    ";
+                    mysqli_multi_query($conn,$sql);
+                    $error[]="Couldn't insert information.Try again!";
+                }
             }
 }
 ?>
@@ -93,9 +103,83 @@ if($_SERVER["REQUEST_METHOD"] == "POST" and empty($error) and !empty($_POST))
 
 <div class="content">
 
-<?php include 'includes/stat.php'; //include stat.php to show statistics//
-      include 'includes/form.php'; //-----include form-----//
+<?php  // show statistics(little code added from stat.php)//
+   
 
+    /**function get number of element in an entity or get number of element based on entty */
+          function getNum($sql)
+          {
+              global $conn;
+              $result=mysqli_query($conn,$sql);
+              return mysqli_fetch_array($result)[0];
+          }
+
+     //----total students and how many are vaccinated---//
+          $total=getNum("SELECT count(*) FROM student;");
+
+          $vaccinated=getNum("SELECT count('vaccinated') FROM student where vaccinated='Yes';");
+
+          $v_percent=0;
+          if($total!=0)
+            $v_percent=round(($vaccinated*1.0/$total)*100,1);
+          
+  //----how many students taken first and second dose----//
+          $first_dose=getNum("SELECT count('first_dose') FROM vaccination_info where first_dose='Yes';");
+
+          $second_dose=getNum("SELECT count('second_dose') FROM vaccination_info where second_dose='Yes';");
+
+          if($total!=0)
+          {
+              $first_dose = round(($first_dose*1.0/$total)*100,1);
+              $second_dose = round(($second_dose*1.0/$total)*100,1);
+          }
+
+      //-----------side effects-------------//
+
+        $total_effect=getNum("SELECT count(*) FROM side_effect where headache='Yes' 
+        OR fever='Yes' OR vomitting='Yes' OR
+         NOT ( other_effect='' OR other_effect='No' OR other_effect='Nothing');");
+
+          $headache=getNum("SELECT count('headache') FROM side_effect where headache='Yes';");
+
+          $fever=getNum("SELECT count('fever') FROM side_effect where fever='Yes';");
+
+          $vomitting=getNum("SELECT count('vomitting') FROM side_effect where vomitting='Yes';");
+
+          $other_effect=getNum("SELECT count('other_effect') FROM side_effect where NOT ( other_effect='' OR other_effect='No' OR other_effect='Nothing');");
+
+          if($vaccinated!=0)
+          {
+            $total_effect = round(($total_effect*1.0/$vaccinated)*100,1);
+              $fever = round(($fever*1.0/$vaccinated)*100,1);
+              $headache = round(($headache*1.0/$vaccinated)*100,1);
+              $vomitting = round(($vomitting*1.0/$vaccinated)*100,1);
+              $other_effect = round(($other_effect*1.0/$vaccinated)*100,1);
+
+          }
+          
+        
+        ?>
+<div class="stat">
+    <strong>Vaccinated: </strong>
+      <p>Total <?=$total;?> students have registered. Among them <?=$vaccinated;?> students are vaccinated.</p>
+    <br>
+    <?php if($total!=0):?>
+        <div class="total shape">
+                <div class="shape done"  style="height:24px;
+                width:<?=$v_percent;?>%">
+                     <?=$v_percent;?>%
+                </div>
+          </div>
+          <h5><?=$v_percent;?>% students are vaccinated.</h5>
+     <?php endif;?>
+          
+</div>
+
+<!-----End of Stat---------->
+
+<?php
+      include 'includes/form.php'; //-----include form-----//
 
 ?>
 

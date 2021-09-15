@@ -15,7 +15,8 @@
 
                if(mysqli_connect_error())  //if it can't connect to database print errors
                   {
-                     echo mysqli_connect_error($conn)."<br>";
+                     echo "Connection Error!<br>";
+                     exit;
 
                   }
 
@@ -60,7 +61,7 @@
           $result = mysqli_query($conn,$sql);
               if($result===false)
                   {
-                      echo mysqli_error($conn);
+                      echo "Error!";
                       exit;
                   }
               return mysqli_fetch_all($result,MYSQLI_ASSOC);
@@ -77,7 +78,7 @@
        {
            $stmt=mysqli_prepare($conn,$sql);
            if($stmt===false)
-               echo mysqli_error($conn)."<br>";
+               echo "Error!<br>";
            return $stmt;
        }
 
@@ -90,7 +91,7 @@
       if(mysqli_stmt_execute($stmt))
                   return 1;
                 else
-                  echo mysqli_error($stmt)."<br>";
+                  echo "Error!<br>";
       return 0;
       }
 

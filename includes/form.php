@@ -52,7 +52,7 @@
                 <hr>
 
                 <label for="vaccination_id"><strong>Vaccination ID</strong></label>
-                    <input type="text" placeholder="Vaccination ID"  name="vaccination_id" id="vaccination_id" pattern="[A-Za-z0-9]+">
+                    <input type="text" placeholder="Registration No."  name="vaccination_id" id="vaccination_id" pattern="[A-Za-z0-9]+">
                     
                 <label for="vaccine_name"><strong>Vaccine Name</strong></label>
                     <input type="text" placeholder="Vaccine Name" name="vaccine_name" pattern="[A-Za-z]+" id="vaccine_name">

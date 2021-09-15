@@ -107,12 +107,7 @@
       text-align: center;
         width:100%;
     }
-    .effects input, .effects select,
-    .effects button {
-        width: 32%;
-        padding: 10px 5px;
-        margin: 5px auto;
-    }
+    
     .effects .circle,.effects .txt
     {
       margin: 5px auto;
