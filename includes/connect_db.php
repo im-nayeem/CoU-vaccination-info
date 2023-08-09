@@ -5,10 +5,10 @@
 */
             function getDB()
             {
-               $db_host="localhost"; //host server
-               $db_name="cou_students";  //database name
-               $db_user="nayeem"; //database user name
-               $db_pass="(!4]1VCoztG2gM3u"; //pasword for $db_user
+               $db_host="127.0.0.1:3306"; //host server
+               $db_name="cou_student";  //database name
+               $db_user="root"; //database user name
+               $db_pass=""; //pasword for $db_user
 
                $conn=mysqli_connect($db_host,$db_user,$db_pass,$db_name); 
                                  //get connection by mysqli_connect()
